@@ -557,12 +557,14 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentQuestionIndex = 0;
     let Score = 0;
     let Answered = false;
+    
 
     let heroContainer = document.querySelector(".hero");
     let quizContainer = document.querySelector(".quiz-section");
 
     heroContainer.style.display = "none";
     quizContainer.style.display = "flex";
+
 
     quizContainer.innerHTML = `
     <div class="quiz-container">
@@ -587,11 +589,13 @@ document.addEventListener("DOMContentLoaded", () => {
       }`;
 
       optionContainer.innerHTML = ``;
+      Answered = false;
 
       questionObj.options.forEach((option) => {
         let optionElement = document.createElement("p");
         optionElement.textContent = option;
         optionElement.addEventListener("click", () => {
+            console.log(Answered);
           if (!Answered) {
             optionElement.classList.add("selected");
             Answered = true;
@@ -607,17 +611,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
       function checkAnswer(userAnswer, correctAnswer) {
         let feedback = document.createElement("div");
+        feedback.setAttribute("id","feedback");
         if (userAnswer == correctAnswer) {
           Score++;
           feedback.textContent = "Corret Answer";
           feedback.style.color = "Green";
+          
         } else {
           feedback.textContent = "wrong, Answer is " + correctAnswer;
           feedback.style.color = "red";
         }
+
         optionContainer.appendChild(feedback);
+        setTimeout(()=>{
+            optionContainer.removeChild(feedback);
+        },2000)
         updateScore();
-        Answered = false;
+        
       }
     }
 
@@ -633,8 +643,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function endQuiz(questionLength) {
       quizContainer.innerHTML = `
+            <img src = ${Score<5 ? "https://i.pinimg.com/736x/b5/06/16/b506162cd961fb5ae6c2e1b821231800.jpg":"https://i.pinimg.com/736x/44/80/fe/4480fe84d16064284106696136026a2e.jpg"}>  
             <h1>Quiz is Complete!</h1>
-            <p>Your Final Score: ${Score} / ${questionLength}</p> 
+            <p>Your Final Score: ${Score} / ${questionLength} 👍</p> 
             <button id="home-button">Go to home</button>
             `;
       document.getElementById("home-button").addEventListener("click", () => {

@@ -7,12 +7,12 @@ body{
     width: 100vw;
     height: 100vh;
     background-color: whitesmoke;
+    margin: 0px;
 }
 .hero{
     width: 100%;
     height: 90vh;
     display: flex;
-    margin: auto;
     flex-direction: row;
 }
 .hero img{
@@ -66,7 +66,7 @@ body{
     background-position: center;
 }
 #Histry{
-    background-image: url("./History.png");
+    background-image: url("Assets/History.png");
     background-size: cover;
     background-position: bottom;
     transition: all ease-in-out 0.5s;
@@ -76,7 +76,7 @@ body{
 }
 
 #Technology{
-    background-image: url("./Technology.png");
+    background-image: url("Assets/Technology.png");
     background-size: cover;
     transition: all ease-in-out 0.5s;
 }
@@ -111,11 +111,18 @@ body{
     align-items: center;
     width: 100%;
     height: 100vh;
+    background-image: url("./Assets/quizbg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    
 }
 .quiz-container{
     width: 50%;
-    border: 2px solid antiquewhite;
+    border: 2px solid rgb(255, 224, 182);
     padding: 10px;
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    background-color: #f0f8ff00;
 }
 .quiz-container h2{
     border-left: 4px solid blue;
@@ -143,4 +150,17 @@ button{
     font-weight: 600;
     padding: 20px 40px;
     border-radius: 20px;
+}
+#feedback{
+    font-weight: 400;
+    font-size: 16px;
+    text-align: center;
+    margin: 10px 0px; 
+}
+
+.quiz-section img{
+    width: 300px;
+    height: 300px;
+    border-radius: 20% ;
+    object-fit: contain;
 }
